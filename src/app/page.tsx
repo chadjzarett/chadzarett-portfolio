@@ -98,9 +98,9 @@ export default function Home() {
       <LoadingScreen />
       <ProgressIndicator />
       
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-blue-50/30 dark:to-blue-950/30">
+      <div className="min-h-screen bg-background">
         {/* Navigation */}
-        <nav className="fixed top-0 w-full z-40 glass-effect dark:glass-effect-dark">
+        <nav className="fixed top-0 w-full z-40 backdrop-blur-sm bg-background/80 border-b border-border">
           <div className="container-max px-4 py-4">
             <div className="flex justify-between items-center">
               <motion.div
@@ -109,7 +109,7 @@ export default function Home() {
                 className="flex items-center space-x-3"
               >
                 <CZLogo />
-                <span className="text-xl font-bold text-gradient">Chad Zarett</span>
+                <span className="text-xl font-bold text-primary">Chad Zarett</span>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
@@ -145,18 +145,18 @@ export default function Home() {
         </nav>
 
         {/* Hero Section with Enhanced Design */}
-        <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background to-blue-50/20 dark:to-blue-950/20">
+        <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
           {/* Enhanced Background Elements */}
           <motion.div 
             style={{ y }}
-            className="absolute inset-0 bg-gradient-to-br from-blue-500/8 via-transparent to-purple-500/8 dark:from-blue-500/4 dark:to-purple-500/4"
+            className="absolute inset-0 bg-muted/20"
           />
           
           {/* Geometric Background Elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary/3 to-blue-500/3 rounded-full blur-3xl" />
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/3 rounded-full blur-3xl" />
           </div>
 
           <div className="container-max text-center relative z-10 px-4">
@@ -174,7 +174,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
-                  className="block text-gradient bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent"
+                  className="block text-primary"
                 >
                   Product Leader
                 </motion.span>
@@ -213,49 +213,30 @@ export default function Home() {
                 >
                   <span className="relative z-10 font-semibold">Let's Connect</span>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-primary via-blue-600 to-primary"
+                    className="absolute inset-0 bg-primary"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: 0 }}
                     transition={{ duration: 0.4 }}
                   />
                 </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => scrollToSection("experience")}
-                  className="text-lg px-10 py-4 border-2 border-primary/30 hover:border-primary bg-background/50 backdrop-blur-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
-                >
-                  View My Journey
-                </Button>
+                <Link href="/ai">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="text-lg px-10 py-4 border-2 border-primary/30 hover:border-primary bg-background/50 backdrop-blur-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
+                  >
+                    AI Solutions
+                  </Button>
+                </Link>
               </motion.div>
 
-              {/* Key Stats */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.1 }}
-                className="flex flex-wrap justify-center gap-12 pt-8 pb-4 text-center"
-              >
-                <div className="flex flex-col items-center">
-                  <span className="text-3xl font-bold text-primary">20+</span>
-                  <span className="text-sm text-muted-foreground font-medium">Years Experience</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-3xl font-bold text-primary">Millions</span>
-                  <span className="text-sm text-muted-foreground font-medium">Active Users</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-3xl font-bold text-primary">3</span>
-                  <span className="text-sm text-muted-foreground font-medium">Global Markets</span>
-                </div>
-              </motion.div>
             </motion.div>
           </div>
 
         </section>
 
-        {/* About Section */}
-        <section id="about" className="section-padding">
+        {/* How It Works Section */}
+        <section id="about" className="section-padding bg-muted/30">
           <div className="container-max">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -264,35 +245,180 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">About Me</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">How I Work</h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                A proven methodology for driving product innovation and delivering exceptional results through strategic thinking and collaborative leadership.
+              </p>
             </motion.div>
 
-            {/* Overview Card with Gradient */}
+            {/* Process Steps */}
+            <div className="grid lg:grid-cols-3 gap-8 mb-16 items-start">
+              {/* Step 1: Strategy & Vision */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="text-center group h-full flex flex-col"
+              >
+                <div className="relative mb-8">
+                  <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    1
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-4">Strategy & Vision</h3>
+                <p className="text-muted-foreground mb-6 flex-grow">
+                  Define clear product strategy and vision aligned with business objectives and user needs through comprehensive market analysis and stakeholder engagement.
+                </p>
+                <div className="bg-card/50 backdrop-blur-sm rounded-xl p-6 border border-primary/20">
+                  <h4 className="font-semibold text-foreground mb-3">Key Activities</h4>
+                  <ul className="text-sm text-muted-foreground space-y-2">
+                    <li className="flex items-center">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                      Market research & competitive analysis
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                      Stakeholder alignment & buy-in
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                      Roadmap development & prioritization
+                    </li>
+                  </ul>
+                </div>
+              </motion.div>
+
+              {/* Step 2: Execution & Collaboration */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-center group h-full flex flex-col"
+              >
+                <div className="relative mb-8">
+                  <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    2
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-4">Execution & Collaboration</h3>
+                <p className="text-muted-foreground mb-6 flex-grow">
+                  Lead cross-functional teams through the entire product lifecycle, ensuring seamless collaboration between engineering, design, and marketing teams.
+                </p>
+                <div className="bg-card/50 backdrop-blur-sm rounded-xl p-6 border border-primary/20">
+                  <h4 className="font-semibold text-foreground mb-3">Key Activities</h4>
+                  <ul className="text-sm text-muted-foreground space-y-2">
+                    <li className="flex items-center">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                      Cross-functional team leadership
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                      Agile development processes
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                      Quality assurance & testing
+                    </li>
+                  </ul>
+                </div>
+              </motion.div>
+
+              {/* Step 3: Launch & Optimization */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="text-center group h-full flex flex-col"
+              >
+                <div className="relative mb-8">
+                  <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    3
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-4">Launch & Optimization</h3>
+                <p className="text-muted-foreground mb-6 flex-grow">
+                  Deliver products to market and continuously optimize based on user feedback, analytics, and business metrics to drive growth and user satisfaction.
+                </p>
+                <div className="bg-card/50 backdrop-blur-sm rounded-xl p-6 border border-primary/20">
+                  <h4 className="font-semibold text-foreground mb-3">Key Activities</h4>
+                  <ul className="text-sm text-muted-foreground space-y-2">
+                    <li className="flex items-center">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                      Product launch & go-to-market
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                      User feedback analysis
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                      Performance optimization
+                    </li>
+                  </ul>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Results Summary */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.01, y: -5 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mb-16"
+              className="bg-primary/5 border border-primary/20 rounded-2xl p-8"
             >
-              <div className="relative rounded-3xl p-8 md:p-12 bg-gradient-to-br from-rose-400 via-pink-400 to-rose-500 text-white shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-rose-400/90 via-pink-400/90 to-rose-500/90 backdrop-blur-sm" />
-                <div className="relative z-10">
-                  <p className="text-md md:text-md leading-relaxed">
-                    20+ years of telecommunications experience driving innovation and delivering user-centric solutions that scale across millions of devices. 
-                    Specializes in cross-platform product strategy, team leadership, and data-driven decision making. 
-                    Proven track record of managing full product lifecycles from ideation to launch, with expertise in cross-functional collaboration 
-                    across engineering, design, and marketing teams. Passionate about innovation, user experience optimization, and building products 
-                    that make a meaningful impact in people's lives.
-                  </p>
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-foreground mb-4">Proven Results</h3>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  This systematic approach has delivered exceptional results across multiple product launches and platform innovations.
+                </p>
+              </div>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
+                      <span className="text-primary">✓</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">20+ Years Experience</div>
+                      <div className="text-sm text-muted-foreground">Telecommunications & Product Management</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
+                      <span className="text-primary">✓</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">Millions of Users</div>
+                      <div className="text-sm text-muted-foreground">Products serving global audiences</div>
+                    </div>
+                  </div>
                 </div>
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-xl" />
-                <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-white/10 rounded-full blur-xl" />
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
+                      <span className="text-primary">✓</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">Cross-Platform Expertise</div>
+                      <div className="text-sm text-muted-foreground">Mobile, Web, and Connected TV</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
+                      <span className="text-primary">✓</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">Data-Driven Decisions</div>
+                      <div className="text-sm text-muted-foreground">Analytics and user research focused</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
-
-
           </div>
         </section>
 
@@ -334,7 +460,7 @@ export default function Home() {
                           <div className="flex items-center gap-3 flex-wrap">
                             <CardTitle className="text-primary">{item.title}</CardTitle>
                             {item.isCurrentRole && (
-                              <span className="px-4 py-2 bg-gradient-to-r from-primary to-blue-600 text-white text-sm font-bold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 animate-pulse">
+                              <span className="px-4 py-2 bg-primary text-primary-foreground text-sm font-bold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 animate-pulse">
                                 Current Role
                               </span>
                             )}
@@ -353,8 +479,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Current Role Section */}
-        <section className="section-padding">
+        {/* Key Features Section */}
+        <section className="section-padding bg-muted/30">
           <div className="container-max">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -363,86 +489,120 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Current Focus</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Key Focus Areas</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Leading product innovation and strategic initiatives as Director of Product.
+                Leading strategic product initiatives that drive innovation and deliver exceptional user experiences across multiple platforms.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Feature Grid */}
+            <div className="grid lg:grid-cols-3 gap-8 mb-16 items-start">
+              {/* Strategic Leadership */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="space-y-6"
+                className="group"
               >
-                <motion.div
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Card className="hover:shadow-lg transition-all duration-300">
-                    <CardHeader>
-                      <CardTitle className="text-primary">Key Responsibilities</CardTitle>
-                      <CardDescription>Director of Product, Xumo Consumer App Team</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="list-disc pl-5 space-y-2 text-base">
-                        <li>Lead product strategy, vision, and roadmap for Xumo Play apps and Website, ensuring alignment with business goals and user needs</li>
-                        <li>Oversee product lifecycle from ideation through launch and iteration to deliver seamless, engaging user experiences</li>
-                        <li>Collaborate with cross-functional teams, including engineering, design, marketing, sales, and customer support to ensure on-time, within-budget feature delivery</li>
-                        <li>Analyze user feedback, market trends, and competitive landscape to identify opportunities for growth-driving features and enhancements</li>
-                        <li>Engage with stakeholders at all levels, presenting product plans and updates to executive leadership while ensuring cross-departmental alignment</li>
-                        <li>Oversee the customer success and privacy support teams providing a best in class customer experience</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                <Card className="h-full hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
+                  <CardContent className="p-8">
+                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                      <span className="text-2xl">🎯</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-4">Strategic Leadership</h3>
+                    <p className="text-muted-foreground mb-6">
+                      Lead product strategy, vision, and roadmap for Xumo Play apps and website, ensuring alignment with business goals and user needs.
+                    </p>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex items-center">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                        Cross-platform product strategy
+                      </li>
+                      <li className="flex items-center">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                        Executive stakeholder engagement
+                      </li>
+                      <li className="flex items-center">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                        Market trend analysis
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
               </motion.div>
 
+              {/* Product Lifecycle Management */}
               <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-3 gap-4"
+                className="group"
               >
-                {achievements.map((achievement, index) => (
-                  <motion.div
-                    key={achievement.title}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card className="h-full text-center hover:shadow-lg transition-all duration-300 cursor-pointer">
-                      <CardContent className="pt-6">
-                        <div className="text-3xl mb-2">{achievement.icon}</div>
-                        <h4 className="font-semibold text-sm mb-1">{achievement.title}</h4>
-                        <p className="text-xs text-muted-foreground">{achievement.description}</p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-                {/* Add one more achievement card to make 6 total (2 rows of 3) */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ duration: 0.3, delay: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full text-center hover:shadow-lg transition-all duration-300 cursor-pointer">
-                    <CardContent className="pt-6">
-                      <div className="text-3xl mb-2">📈</div>
-                      <h4 className="font-semibold text-sm mb-1">Growth Strategy</h4>
-                      <p className="text-xs text-muted-foreground">Data-driven feature development and user engagement optimization</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                <Card className="h-full hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
+                  <CardContent className="p-8">
+                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                      <span className="text-2xl">🚀</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-4">Product Lifecycle</h3>
+                    <p className="text-muted-foreground mb-6">
+                      Oversee product lifecycle from ideation through launch and iteration to deliver seamless, engaging user experiences.
+                    </p>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex items-center">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                        End-to-end product development
+                      </li>
+                      <li className="flex items-center">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                        User experience optimization
+                      </li>
+                      <li className="flex items-center">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                        Iterative improvement cycles
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              {/* Cross-Functional Collaboration */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="group"
+              >
+                <Card className="h-full hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
+                  <CardContent className="p-8">
+                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                      <span className="text-2xl">🤝</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-4">Team Collaboration</h3>
+                    <p className="text-muted-foreground mb-6">
+                      Collaborate with cross-functional teams including engineering, design, marketing, and customer support for on-time delivery.
+                    </p>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex items-center">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                        Cross-functional alignment
+                      </li>
+                      <li className="flex items-center">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                        Stakeholder management
+                      </li>
+                      <li className="flex items-center">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                        Customer success oversight
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
               </motion.div>
             </div>
+
           </div>
         </section>
 
@@ -546,7 +706,7 @@ export default function Home() {
                   >
                     <span className="relative z-10">Send Email</span>
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-primary to-blue-600"
+                      className="absolute inset-0 bg-primary"
                       initial={{ x: "-100%" }}
                       whileHover={{ x: 0 }}
                       transition={{ duration: 0.3 }}

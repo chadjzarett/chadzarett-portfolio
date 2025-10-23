@@ -15,12 +15,6 @@ export function PittLogo() {
         className="drop-shadow-sm"
       >
         {/* Pitt Script Logo - Based on official design */}
-        <defs>
-          <linearGradient id="pittBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#1e3a8a" />
-            <stop offset="100%" stopColor="#1e40af" />
-          </linearGradient>
-        </defs>
         
         {/* Gold outline/shadow */}
         <path
@@ -33,7 +27,7 @@ export function PittLogo() {
         {/* P - First letter */}
         <path
           d="M30 35 Q35 25 50 30 Q70 35 75 50 Q80 60 70 65 L60 70 Q50 75 45 70 L40 65 Q35 60 30 55 Z M30 55 L30 80 Q30 85 35 85 Q40 85 40 80 L40 55"
-          fill="url(#pittBlue)"
+          fill="#1e3a8a"
           stroke="#fbbf24"
           strokeWidth="1.5"
         />
@@ -44,7 +38,7 @@ export function PittLogo() {
         {/* i - stem */}
         <path
           d="M95 35 L95 80 Q95 85 100 85 Q105 85 105 80 L105 35"
-          fill="url(#pittBlue)"
+          fill="#1e3a8a"
           stroke="#fbbf24"
           strokeWidth="1.5"
         />
@@ -52,7 +46,7 @@ export function PittLogo() {
         {/* t - first t */}
         <path
           d="M115 40 L135 40 Q140 40 140 45 Q140 50 135 50 L125 50 L125 80 Q125 85 130 85 Q135 85 135 80 L135 50 L145 50 Q150 50 150 55 Q150 60 145 60 L135 60"
-          fill="url(#pittBlue)"
+          fill="#1e3a8a"
           stroke="#fbbf24"
           strokeWidth="1.5"
         />
@@ -60,7 +54,7 @@ export function PittLogo() {
         {/* t - second t */}
         <path
           d="M160 40 L180 40 Q185 40 185 45 Q185 50 180 50 L170 50 L170 80 Q170 85 175 85 Q180 85 180 80 L180 50 L190 50 Q195 50 195 55 Q195 60 190 60 L180 60"
-          fill="url(#pittBlue)"
+          fill="#1e3a8a"
           stroke="#fbbf24"
           strokeWidth="1.5"
         />
