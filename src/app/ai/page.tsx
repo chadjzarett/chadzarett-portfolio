@@ -13,9 +13,14 @@ export default function AIPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-40 backdrop-blur-sm bg-background/80 border-b border-border">
-        <div className="container-max px-4 py-4">
+      {/* Floating Navigation */}
+      <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-40 w-[90%] max-w-5xl">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="rounded-full bg-foreground dark:bg-foreground shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.1)] border border-border/20 backdrop-blur-md px-6 py-3"
+        >
           <div className="flex justify-between items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -24,24 +29,31 @@ export default function AIPage() {
             >
               <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
                 <CZLogo />
-                <span className="text-xl font-bold text-primary">Chad Zarett</span>
+                <span className="text-lg font-bold text-background dark:text-background">Chad Zarett</span>
               </Link>
             </motion.div>
+
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-4"
+              className="flex items-center space-x-3"
             >
-              <ThemeToggle />
+              <div className="hidden md:flex items-center">
+                <ThemeToggle />
+              </div>
               <Link href="/">
-                <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                <Button
+                  size="sm"
+                  className="rounded-full bg-background dark:bg-background text-foreground dark:text-foreground hover:bg-background/90 dark:hover:bg-background/90 px-6 shadow-md flex items-center space-x-2"
+                >
                   <ArrowLeft className="w-4 h-4" />
-                  <span>Back to Portfolio</span>
+                  <span className="hidden sm:inline">Back to Portfolio</span>
+                  <span className="sm:hidden">Back</span>
                 </Button>
               </Link>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </nav>
 
       {/* Hero Section */}
