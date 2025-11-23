@@ -26,7 +26,7 @@ export function MobileNav({ sections, onSectionClick }: MobileNavProps) {
         variant="ghost"
         size="sm"
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 text-background dark:text-background hover:bg-background/20 dark:hover:bg-background/20"
+        className="p-2 text-foreground hover:bg-secondary/20"
       >
         {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </Button>
@@ -38,7 +38,7 @@ export function MobileNav({ sections, onSectionClick }: MobileNavProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-16 left-0 right-0 mx-4 bg-foreground/95 dark:bg-foreground/95 backdrop-blur-md border border-border/50 shadow-lg rounded-2xl overflow-hidden"
+            className="absolute top-20 left-0 right-0 mx-auto w-full max-w-sm glass-nav border border-border/50 shadow-xl rounded-2xl overflow-hidden z-50"
           >
             <div className="px-4 py-4">
               <nav className="flex flex-col space-y-1">
@@ -46,19 +46,19 @@ export function MobileNav({ sections, onSectionClick }: MobileNavProps) {
                   <button
                     key={section}
                     onClick={() => handleSectionClick(section)}
-                    className="text-left py-3 px-4 rounded-xl hover:bg-background/20 dark:hover:bg-background/20 transition-colors capitalize font-medium text-background dark:text-background"
+                    className="text-left py-3 px-4 rounded-xl hover:bg-secondary/50 transition-colors capitalize font-medium text-foreground"
                   >
                     {section}
                   </button>
                 ))}
                 <Link href="/ai" onClick={() => setIsOpen(false)}>
-                  <button className="text-left py-3 px-4 rounded-xl hover:bg-background/20 dark:hover:bg-background/20 transition-colors capitalize font-medium text-background dark:text-background w-full">
+                  <button className="text-left py-3 px-4 rounded-xl hover:bg-secondary/50 transition-colors capitalize font-medium text-foreground w-full">
                     AI Development
                   </button>
                 </Link>
-                <div className="pt-2 mt-2 border-t border-background/20">
+                <div className="pt-4 mt-2 border-t border-border/20">
                   <div className="flex items-center justify-between py-2 px-4">
-                    <span className="text-sm text-background/70 dark:text-background/70">Theme</span>
+                    <span className="text-sm text-muted-foreground">Theme</span>
                     <ThemeToggle />
                   </div>
                 </div>

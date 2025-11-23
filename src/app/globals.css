@@ -43,76 +43,79 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  /* Light mode - White background with black text and CTAs */
-  --background: oklch(1 0 0); /* Pure white */
-  --foreground: oklch(0.1 0.01 240); /* Very dark gray/black */
-  --card: oklch(1 0 0); /* White cards */
-  --card-foreground: oklch(0.1 0.01 240); /* Dark text on cards */
-  --popover: oklch(1 0 0); /* White popovers */
-  --popover-foreground: oklch(0.1 0.01 240); /* Dark text */
-  --primary: oklch(0.1 0.01 240); /* Black primary (CTAs) */
-  --primary-foreground: oklch(1 0 0); /* White text on black CTAs */
-  --secondary: oklch(0.96 0.01 240); /* Very light gray */
-  --secondary-foreground: oklch(0.1 0.01 240); /* Dark text */
-  --muted: oklch(0.96 0.01 240); /* Light muted background */
-  --muted-foreground: oklch(0.45 0.02 240); /* Medium gray text */
-  --accent: oklch(0.95 0.01 240); /* Light accent */
-  --accent-foreground: oklch(0.1 0.01 240); /* Dark text */
-  --destructive: oklch(0.577 0.245 27.325); /* Red for destructive actions */
-  --border: oklch(0.9 0.02 240); /* Light gray borders */
-  --input: oklch(0.9 0.02 240); /* Light gray inputs */
-  --ring: oklch(0.1 0.01 240); /* Black focus ring */
-  /* Hint colors for accents */
-  --chart-1: oklch(0.646 0.222 41.116); /* Orange */
-  --chart-2: oklch(0.6 0.118 184.704); /* Blue */
-  --chart-3: oklch(0.398 0.07 227.392); /* Purple */
-  --chart-4: oklch(0.828 0.189 84.429); /* Green */
-  --chart-5: oklch(0.769 0.188 70.08); /* Yellow */
-  --sidebar: oklch(1 0 0); /* White sidebar */
-  --sidebar-foreground: oklch(0.1 0.01 240); /* Dark text */
-  --sidebar-primary: oklch(0.1 0.01 240); /* Black primary */
-  --sidebar-primary-foreground: oklch(1 0 0); /* White text */
-  --sidebar-accent: oklch(0.96 0.01 240); /* Light accent */
-  --sidebar-accent-foreground: oklch(0.1 0.01 240); /* Dark text */
-  --sidebar-border: oklch(0.9 0.02 240); /* Light border */
-  --sidebar-ring: oklch(0.1 0.01 240); /* Black ring */
+  --radius: 0.75rem;
+  /* Light mode - Clean, professional SaaS palette */
+  --background: oklch(0.99 0 0); /* Slightly off-white for warmth */
+  --foreground: oklch(0.12 0.01 260); /* Deep slate/navy for text, softer than black */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.12 0.01 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0.01 260);
+  --primary: oklch(0.12 0.01 260); /* Dark primary for strong CTAs */
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.97 0.01 260); /* Very light slate for secondary actions */
+  --secondary-foreground: oklch(0.12 0.01 260);
+  --muted: oklch(0.97 0.01 260);
+  --muted-foreground: oklch(0.45 0.02 260); /* Muted slate */
+  --accent: oklch(0.97 0.01 260);
+  --accent-foreground: oklch(0.12 0.01 260);
+  --destructive: oklch(0.58 0.25 27);
+  --border: oklch(0.92 0.01 260); /* Subtle borders */
+  --input: oklch(0.92 0.01 260);
+  --ring: oklch(0.12 0.01 260);
+  
+  /* Chart colors retained */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  
+  --sidebar: oklch(0.99 0 0);
+  --sidebar-foreground: oklch(0.12 0.01 260);
+  --sidebar-primary: oklch(0.12 0.01 260);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.97 0.01 260);
+  --sidebar-accent-foreground: oklch(0.12 0.01 260);
+  --sidebar-border: oklch(0.92 0.01 260);
+  --sidebar-ring: oklch(0.12 0.01 260);
 }
 
 .dark {
-  /* Dark mode - Black background with white text and CTAs */
-  --background: oklch(0.05 0.01 240); /* Very dark/black */
-  --foreground: oklch(0.98 0.01 240); /* White text */
-  --card: oklch(0.08 0.01 240); /* Dark cards */
-  --card-foreground: oklch(0.98 0.01 240); /* White text on cards */
-  --popover: oklch(0.08 0.01 240); /* Dark popovers */
-  --popover-foreground: oklch(0.98 0.01 240); /* White text */
-  --primary: oklch(0.98 0.01 240); /* White primary (CTAs) */
-  --primary-foreground: oklch(0.05 0.01 240); /* Black text on white CTAs */
-  --secondary: oklch(0.12 0.01 240); /* Dark gray */
-  --secondary-foreground: oklch(0.98 0.01 240); /* White text */
-  --muted: oklch(0.12 0.01 240); /* Dark muted background */
-  --muted-foreground: oklch(0.65 0.02 240); /* Light gray text */
-  --accent: oklch(0.15 0.01 240); /* Dark accent */
-  --accent-foreground: oklch(0.98 0.01 240); /* White text */
-  --destructive: oklch(0.704 0.191 22.216); /* Red for destructive actions */
-  --border: oklch(0.2 0.01 240); /* Dark borders */
-  --input: oklch(0.2 0.01 240); /* Dark inputs */
-  --ring: oklch(0.98 0.01 240); /* White focus ring */
-  /* Hint colors for accents - brighter in dark mode */
-  --chart-1: oklch(0.7 0.222 41.116); /* Brighter orange */
-  --chart-2: oklch(0.7 0.118 184.704); /* Brighter blue */
-  --chart-3: oklch(0.6 0.07 227.392); /* Brighter purple */
-  --chart-4: oklch(0.7 0.189 84.429); /* Brighter green */
-  --chart-5: oklch(0.7 0.188 70.08); /* Brighter yellow */
-  --sidebar: oklch(0.05 0.01 240); /* Dark sidebar */
-  --sidebar-foreground: oklch(0.98 0.01 240); /* White text */
-  --sidebar-primary: oklch(0.98 0.01 240); /* White primary */
-  --sidebar-primary-foreground: oklch(0.05 0.01 240); /* Black text */
-  --sidebar-accent: oklch(0.12 0.01 240); /* Dark accent */
-  --sidebar-accent-foreground: oklch(0.98 0.01 240); /* White text */
-  --sidebar-border: oklch(0.2 0.01 240); /* Dark border */
-  --sidebar-ring: oklch(0.98 0.01 240); /* White ring */
+  /* Dark mode - Deep, rich tones */
+  --background: oklch(0.08 0.02 260); /* Deep navy/slate background */
+  --foreground: oklch(0.98 0.01 260);
+  --card: oklch(0.12 0.02 260); /* Slightly lighter card bg */
+  --card-foreground: oklch(0.98 0.01 260);
+  --popover: oklch(0.12 0.02 260);
+  --popover-foreground: oklch(0.98 0.01 260);
+  --primary: oklch(0.98 0.01 260); /* White/Very light grey primary */
+  --primary-foreground: oklch(0.08 0.02 260);
+  --secondary: oklch(0.16 0.02 260);
+  --secondary-foreground: oklch(0.98 0.01 260);
+  --muted: oklch(0.16 0.02 260);
+  --muted-foreground: oklch(0.65 0.02 260);
+  --accent: oklch(0.16 0.02 260);
+  --accent-foreground: oklch(0.98 0.01 260);
+  --destructive: oklch(0.7 0.19 22);
+  --border: oklch(0.2 0.02 260);
+  --input: oklch(0.2 0.02 260);
+  --ring: oklch(0.98 0.01 260);
+  
+  --chart-1: oklch(0.7 0.222 41.116);
+  --chart-2: oklch(0.7 0.118 184.704);
+  --chart-3: oklch(0.6 0.07 227.392);
+  --chart-4: oklch(0.7 0.189 84.429);
+  --chart-5: oklch(0.7 0.188 70.08);
+  
+  --sidebar: oklch(0.08 0.02 260);
+  --sidebar-foreground: oklch(0.98 0.01 260);
+  --sidebar-primary: oklch(0.98 0.01 260);
+  --sidebar-primary-foreground: oklch(0.08 0.02 260);
+  --sidebar-accent: oklch(0.16 0.02 260);
+  --sidebar-accent-foreground: oklch(0.98 0.01 260);
+  --sidebar-border: oklch(0.2 0.02 260);
+  --sidebar-ring: oklch(0.98 0.01 260);
 }
 
 @layer base {
@@ -120,8 +123,8 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1; /* Enable stylistic sets for cleaner font look */
   }
   
   html {
@@ -135,19 +138,28 @@
   }
   
   .section-padding {
-    @apply py-16 px-4 sm:px-6 lg:px-8;
+    @apply py-24 px-4 sm:px-6 lg:px-8; /* Increased padding */
   }
   
   .container-max {
     @apply max-w-7xl mx-auto;
   }
   
-  .glass-effect {
-    @apply backdrop-blur-sm bg-white/80 border border-white/20;
+  /* Modern Glassmorphism */
+  .glass-nav {
+    @apply backdrop-blur-xl bg-background/70 border-b border-border/40 supports-[backdrop-filter]:bg-background/60;
   }
   
-  .glass-effect-dark {
-    @apply backdrop-blur-sm bg-black/80 border border-white/20;
+  .glass-card {
+    @apply backdrop-blur-lg bg-card/50 border border-border/50 shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  .hero-text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70;
+  }
+  
+  .shimmer {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent;
   }
 }
 
@@ -155,13 +167,14 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 
 @keyframes slideInLeft {
   from {
