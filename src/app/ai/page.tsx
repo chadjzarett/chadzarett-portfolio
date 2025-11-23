@@ -294,18 +294,37 @@ export default function AIPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="glass-card rounded-3xl p-10 border border-primary/10 text-center relative overflow-hidden"
+            className="relative group"
           >
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-            <div className="relative z-10 max-w-4xl mx-auto">
-              <h3 className="text-3xl font-bold mb-6">Strategic Technical Impact</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                This hands-on development experience provides unique insights into AI implementation challenges, 
-                user experience considerations, and scalable architecture requirements. I leverage this technical 
-                understanding to make informed product decisions, evaluate AI partnerships, and identify opportunities 
-                where artificial intelligence can create meaningful user value while maintaining focus on 
-                production-ready, commercially viable solutions.
-              </p>
+            {/* Premium Glow Effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+            
+            <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-white/20 via-white/5 to-white/20 dark:from-white/10 dark:via-white/5 dark:to-white/10 overflow-hidden">
+              <div className="glass-card rounded-[23px] p-12 relative overflow-hidden bg-background/40 dark:bg-black/40 backdrop-blur-2xl">
+                {/* Subtle Grid Pattern */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+                
+                {/* Top Lighting */}
+                <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 bg-primary/20 blur-[64px] rounded-full pointer-events-none" />
+
+                <div className="relative z-10 max-w-4xl mx-auto text-center">
+                   <div className="inline-flex items-center justify-center p-3 mb-8 rounded-2xl bg-primary/5 border border-primary/10 shadow-lg backdrop-blur-sm">
+                     <Zap className="w-6 h-6 text-primary" />
+                   </div>
+
+                  <h3 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+                    Strategic Technical Impact
+                  </h3>
+                  
+                  <p className="text-xl text-muted-foreground leading-relaxed font-light max-w-3xl mx-auto">
+                    This hands-on development experience provides unique insights into AI implementation challenges, 
+                    user experience considerations, and scalable architecture requirements. I leverage this technical 
+                    understanding to make informed product decisions, evaluate AI partnerships, and identify opportunities 
+                    where artificial intelligence can create meaningful user value while maintaining focus on 
+                    production-ready, commercially viable solutions.
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
