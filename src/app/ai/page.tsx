@@ -159,6 +159,7 @@ export default function AIPage() {
                   <div className="space-y-4">
                     {[
                       { name: "Cursor AI & Claude Code", desc: "AI-assisted development workflows", icon: Code, color: "text-blue-500", bg: "bg-blue-500/10" },
+                      { name: "Google AI Studio", desc: "Fast prototyping with Gemini models", icon: Code, color: "text-teal-500", bg: "bg-teal-500/10" },
                       { name: "Loveable.dev & Bolt.new", desc: "Rapid UI prototyping & design-to-code", icon: LayoutTemplate, color: "text-pink-500", bg: "bg-pink-500/10" },
                       { name: "Make.com & Zapier", desc: "Advanced automation workflows", icon: Zap, color: "text-orange-500", bg: "bg-orange-500/10" },
                       { name: "v0.dev", desc: "AI-driven interface generation", icon: Bot, color: "text-green-500", bg: "bg-green-500/10" },
