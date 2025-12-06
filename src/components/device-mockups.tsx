@@ -9,15 +9,15 @@ export function DeviceMockups() {
       {/* Background Glow - Enhanced for pop in both modes */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-purple-500/10 blur-2xl opacity-60" />
       
-      {/* Container */}
-      <div className="relative w-full max-w-[320px] aspect-square perspective-[1000px]">
+      {/* Container - Larger to accommodate spread out devices */}
+      <div className="relative w-full max-w-[500px] aspect-square perspective-[1000px]">
         
-        {/* Web Wireframe (Back Left) */}
+        {/* Web Wireframe (Top Left - Highlighted) */}
         <motion.div 
           initial={{ opacity: 0, x: -20, rotateY: 10 }}
           animate={{ opacity: 1, x: 0, rotateY: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="absolute top-[15%] -left-[5%] w-[65%] aspect-video bg-card border border-border shadow-xl rounded-lg z-10 overflow-hidden dark:shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+          className="absolute top-[5%] left-[5%] w-[40%] aspect-video bg-card border-2 border-primary shadow-xl rounded-lg z-10 overflow-hidden dark:shadow-[0_0_20px_rgba(59,130,246,0.4)]"
         >
           {/* Browser Chrome */}
           <div className="h-5 bg-muted/50 border-b border-border flex items-center px-2 gap-1.5">
@@ -39,41 +39,57 @@ export function DeviceMockups() {
           </div>
         </motion.div>
 
-        {/* CTV Wireframe (Back Right) */}
+        {/* CTV Wireframe (Top Right) */}
         <motion.div
           initial={{ opacity: 0, x: 20, rotateY: -10 }}
           animate={{ opacity: 1, x: 0, rotateY: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="absolute top-[25%] -right-[5%] w-[65%] aspect-video bg-zinc-900 border border-zinc-800 shadow-2xl rounded-lg z-20 overflow-hidden"
+          className="absolute top-[5%] right-[5%] w-[40%] z-20"
         >
-          {/* CTV UI Wireframe */}
-          <div className="h-full p-3 flex flex-col justify-end relative">
-             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-             
-             {/* Hero Banner */}
-             <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-primary/20 to-transparent opacity-50" />
-             
-             {/* Carousel Row */}
-             <div className="relative mt-auto space-y-2 z-10">
-                <div className="h-1.5 w-16 bg-white/20 rounded-full" />
-                <div className="flex gap-2">
-                    {/* Selected Item */}
-                    <div className="w-16 h-10 border-2 border-primary rounded-sm bg-zinc-800 shrink-0 relative shadow-[0_0_10px_rgba(var(--primary),0.5)]">
-                        <div className="absolute inset-0 bg-primary/10 animate-pulse" />
+          {/* TV Screen */}
+          <div className="relative aspect-video bg-black rounded-lg shadow-2xl overflow-hidden border border-zinc-800">
+              {/* CTV UI Wireframe */}
+              <div className="h-full p-3 flex flex-col justify-end relative">
+                 {/* Background Gradient Overlay */}
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 via-transparent to-transparent" />
+                 
+                 {/* Hero Banner/Background Image */}
+                 <div className="absolute inset-0 bg-gradient-to-bl from-primary/30 via-purple-500/20 to-transparent opacity-60" />
+                 
+                 {/* Subtle scan lines effect */}
+                 <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_bottom,transparent_50%,white_50%)] bg-[length:100%_2px]" />
+                 
+                 {/* Content Area */}
+                 <div className="relative mt-auto space-y-3 z-10">
+                    {/* Progress Indicator */}
+                    <div className="h-0.5 w-full bg-white/10 rounded-full overflow-hidden">
+                      <div className="h-full w-1/3 bg-primary rounded-full" />
                     </div>
-                    <div className="w-16 h-10 border border-white/10 rounded-sm bg-zinc-800/50 shrink-0" />
-                    <div className="w-16 h-10 border border-white/10 rounded-sm bg-zinc-800/50 shrink-0" />
-                </div>
-             </div>
-          </div>
+                    
+                    {/* Main Content Carousel */}
+                    <div className="space-y-2">
+                      <div className="h-1.5 w-20 bg-white/15 rounded-full" />
+                      <div className="flex gap-2.5">
+                          {/* Selected Item (Focused) */}
+                          <div className="w-20 h-12 border-2 border-primary rounded-sm bg-zinc-900/80 shrink-0 relative shadow-[0_0_15px_rgba(var(--primary),0.6)] ring-2 ring-primary/30">
+                              <div className="absolute inset-0 bg-primary/20" />
+                              <div className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-2 h-2 bg-primary rounded-full" />
+                          </div>
+                          <div className="w-20 h-12 border border-white/10 rounded-sm bg-zinc-900/40 shrink-0 opacity-60" />
+                          <div className="w-20 h-12 border border-white/10 rounded-sm bg-zinc-900/40 shrink-0 opacity-60" />
+                      </div>
+                    </div>
+                 </div>
+              </div>
+            </div>
         </motion.div>
 
-        {/* Mobile Wireframe (Front Center) */}
+        {/* Mobile Wireframe (Bottom Center) */}
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[28%] aspect-[9/18] bg-background border-2 border-muted-foreground/10 rounded-[1.5rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] dark:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] z-30 overflow-hidden"
+          className="absolute bottom-[8%] left-1/2 -translate-x-1/2 w-[25%] aspect-[9/18] bg-background border-2 border-muted-foreground/10 rounded-[1.5rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] dark:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] z-30 overflow-hidden"
         >
             {/* Notch */}
             <div className="absolute top-0 inset-x-0 h-6 bg-muted/30 border-b border-border/50 flex justify-center">
@@ -119,31 +135,46 @@ export function DeviceMockups() {
             </div>
         </motion.div>
         
-        {/* Connecting Lines Overlay */}
-        <svg className="absolute inset-0 pointer-events-none z-40" viewBox="0 0 320 320">
-            <motion.path 
-                d="M100 120 C 150 150, 160 200, 160 220" 
+        {/* Connecting Lines Overlay - Triangular Pattern */}
+        <svg className="absolute inset-0 pointer-events-none z-0" viewBox="0 0 500 500" preserveAspectRatio="none">
+            {/* Horizontal line: Top-left to Top-right */}
+            <motion.line 
+                x1="120" 
+                y1="80" 
+                x2="380" 
+                y2="80" 
                 fill="none" 
                 stroke="currentColor" 
-                className="text-primary/20 dark:text-primary/40"
-                strokeWidth="1" 
-                strokeDasharray="4 4"
+                className="text-foreground/30 dark:text-foreground/40"
+                strokeWidth="2"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 1.5, delay: 1 }}
+                transition={{ duration: 1.2, delay: 0.6 }}
             />
+            
+            {/* Diagonal line: Top-left to Bottom-center */}
             <motion.path 
-                d="M220 120 C 170 150, 160 200, 160 220" 
+                d="M120 120 Q 250 200, 250 380" 
                 fill="none" 
                 stroke="currentColor" 
-                className="text-primary/20 dark:text-primary/40"
-                strokeWidth="1" 
-                strokeDasharray="4 4"
+                className="text-foreground/30 dark:text-foreground/40"
+                strokeWidth="2"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 1.5, delay: 1 }}
+                transition={{ duration: 1.2, delay: 0.8 }}
             />
-             <circle cx="160" cy="220" r="3" className="fill-primary animate-pulse" />
+            
+            {/* Diagonal line: Top-right to Bottom-center */}
+            <motion.path 
+                d="M380 120 Q 250 200, 250 380" 
+                fill="none" 
+                stroke="currentColor" 
+                className="text-foreground/30 dark:text-foreground/40"
+                strokeWidth="2"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1.2, delay: 1.0 }}
+            />
         </svg>
 
       </div>
