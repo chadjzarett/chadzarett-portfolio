@@ -246,16 +246,14 @@ export default function Home() {
                 </motion.div>
               </motion.div>
 
-              {/* Right Column: Image Placeholder */}
+              {/* Right Column: Image */}
               <motion.div
                 initial={{ opacity: 0, x: 30, scale: 0.95 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative hidden lg:block max-w-md mx-auto w-full"
+                className="relative hidden lg:block w-full max-w-6xl mx-auto"
               >
-                 <div className="aspect-square relative rounded-3xl overflow-hidden shadow-2xl border border-border/50 bg-secondary/30 backdrop-blur-sm">
-                    <DeviceMockups />
-                 </div>
+                 <DeviceMockups />
               </motion.div>
             </div>
           </div>
