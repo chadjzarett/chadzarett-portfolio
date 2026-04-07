@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { DeviceMockups } from "@/components/device-mockups";
+import { AIOrbitall } from "@/components/ai-orbital";
 import { ChevronDown, Mail, MapPin, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,6 +11,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { LoadingScreen } from "@/components/loading-screen";
 import { SkillsExpertise } from "@/components/skills-expertise";
 import { CZLogo } from "@/components/cz-logo";
+import { HeroStatsBar } from "@/components/hero-stats-bar";
 import Link from "next/link";
 
 export default function Home() {
@@ -177,24 +178,33 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="space-y-8 text-left"
               >
-                {/* Main Headline */}
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
-                  <span className="block text-foreground">
-                    Strategic Product
+                {/* Main Headline — strong primary + lighter tagline; accent uses shimmer */}
+                <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.08]">
+                  <span className="block text-foreground font-black">
+                    From vision to
                   </span>
-                  <span className="block hero-text-gradient">
-                    Leadership
+                  <span className="block font-black hero-text-shimmer mt-1">
+                    millions of users
                   </span>
                 </h1>
 
-                {/* Enhanced Subtitle */}
-                <motion.p 
+                <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed font-light"
+                  transition={{ duration: 0.8, delay: 0.25 }}
+                  className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-snug font-light"
                 >
-                  Driving innovation and scaling million-dollar platforms across CTV, Mobile, and Web.
+                  Building products that scale across CTV, mobile, and web, with AI in the loop from strategy to ship.
+                </motion.p>
+
+                {/* AI-aligned line (matches orbital tool orbit metaphor) */}
+                <motion.p
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="text-base md:text-lg text-muted-foreground/85 max-w-2xl leading-relaxed font-normal"
+                >
+                  I use agents and models alongside human judgment for specs, research, and prototypes, keeping roadmaps moving at the speed of the stack orbiting this page.
                 </motion.p>
 
                 {/* Enhanced CTA Buttons */}
@@ -222,38 +232,17 @@ export default function Home() {
                   </Link>
                 </motion.div>
 
-                {/* Social Proof / Stats Mini-bar */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.8 }}
-                  className="pt-12 flex items-center gap-8 md:gap-12 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-                >
-                    <div className="text-left">
-                      <p className="text-2xl font-bold">20+</p>
-                      <p className="text-xs uppercase tracking-widest text-muted-foreground">Years Exp</p>
-                    </div>
-                    <div className="w-px h-8 bg-border"></div>
-                    <div className="text-left">
-                      <p className="text-2xl font-bold">Millions</p>
-                      <p className="text-xs uppercase tracking-widest text-muted-foreground">Users Reached</p>
-                    </div>
-                    <div className="w-px h-8 bg-border"></div>
-                    <div className="text-left">
-                      <p className="text-2xl font-bold">Global</p>
-                      <p className="text-xs uppercase tracking-widest text-muted-foreground">Market Reach</p>
-                    </div>
-                </motion.div>
+                <HeroStatsBar />
               </motion.div>
 
-              {/* Right Column: Image */}
+              {/* Right Column: AI Orbital Animation */}
               <motion.div
                 initial={{ opacity: 0, x: 30, scale: 0.95 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative hidden lg:block w-full max-w-6xl mx-auto"
+                className="relative hidden lg:block w-full"
               >
-                 <DeviceMockups />
+                 <AIOrbitall />
               </motion.div>
             </div>
           </div>

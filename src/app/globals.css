@@ -150,6 +150,12 @@
     @apply backdrop-blur-xl bg-background/70 border-b border-border/40 supports-[backdrop-filter]:bg-background/60;
   }
   
+  .glass-stats-bar {
+    @apply rounded-2xl border border-border/50 backdrop-blur-xl bg-background/45 shadow-md shadow-black/[0.04] ring-1 ring-black/[0.03] px-5 py-4 md:px-8 md:py-5;
+    @apply dark:bg-white/[0.06] dark:border-white/10 dark:shadow-black/25 dark:ring-white/[0.06];
+    @apply transition-all duration-500 hover:border-border/70 hover:shadow-lg hover:shadow-black/[0.06] dark:hover:border-white/15;
+  }
+
   .glass-card {
     @apply backdrop-blur-lg bg-card/50 border border-border/50 shadow-sm hover:shadow-md transition-all duration-300;
     /* Dark mode: lighter background for contrast, subtle border */
@@ -161,6 +167,34 @@
   .hero-text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70;
   }
+
+  /* Animated gradient “shimmer” on hero accent text — subtle, respects reduced motion */
+  .hero-text-shimmer {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      105deg,
+      var(--foreground) 0%,
+      var(--foreground) 32%,
+      oklch(0.5 0.14 260) 48%,
+      oklch(0.55 0.16 230) 52%,
+      var(--foreground) 68%,
+      var(--foreground) 100%
+    );
+    background-size: 220% 100%;
+    animation: hero-text-shimmer 6s ease-in-out infinite;
+  }
+
+  .dark .hero-text-shimmer {
+    background-image: linear-gradient(
+      105deg,
+      var(--foreground) 0%,
+      var(--foreground) 30%,
+      oklch(0.78 0.12 260) 48%,
+      oklch(0.82 0.14 220) 52%,
+      var(--foreground) 70%,
+      var(--foreground) 100%
+    );
+  }
   
   .shimmer {
     @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent;
@@ -168,6 +202,23 @@
 }
 
 /* Custom animations */
+@keyframes hero-text-shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-text-shimmer {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
