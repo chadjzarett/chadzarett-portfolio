@@ -1,23 +1,18 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionConfig } from "framer-motion";
 import { AIOrbitall } from "@/components/ai-orbital";
-import { ChevronDown, Mail, MapPin, Linkedin } from "lucide-react";
+import { Mail, MapPin, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MobileNav } from "@/components/mobile-nav";
 import { ProgressIndicator } from "@/components/progress-indicator";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { LoadingScreen } from "@/components/loading-screen";
 import { SkillsExpertise } from "@/components/skills-expertise";
 import { CZLogo } from "@/components/cz-logo";
 import { HeroStatsBar } from "@/components/hero-stats-bar";
 import Link from "next/link";
 
 export default function Home() {
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -26,34 +21,6 @@ export default function Home() {
   };
 
   const sections = ["about", "experience", "skills", "contact"];
-
-  const achievements = [
-    {
-      title: "Cross-Platform Management",
-      description: "Manage Xumo Play product development across CTV, Mobile, and web apps",
-      icon: "📱📺💻",
-    },
-    {
-      title: "Global Reach",
-      description: "Xumo Play is supported in the US, Canada, and UK",
-      icon: "🌍",
-    },
-    {
-      title: "Massive Scale",
-      description: "Supports millions of active users with billions of hours streamed monthly",
-      icon: "📊",
-    },
-    {
-      title: "Product Innovation",
-      description: "Leading strategic product development for streaming entertainment platform",
-      icon: "🚀",
-    },
-    {
-      title: "Customer Support & Privacy Compliance",
-      description: "Oversee customer success and privacy support teams ensuring best-in-class experience",
-      icon: "🛡️",
-    },
-  ];
 
   const timeline = [
     {
@@ -96,8 +63,7 @@ export default function Home() {
   ];
 
   return (
-    <>
-      <LoadingScreen />
+    <MotionConfig reducedMotion="user">
       <ProgressIndicator />
       
       <div className="min-h-screen bg-background font-sans selection:bg-primary/10 selection:text-primary">
@@ -106,12 +72,12 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.5 }}
             className="rounded-full glass-nav shadow-lg px-6 py-3 border border-border/40"
           >
             <div className="flex justify-between items-center">
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="flex items-center space-x-3"
               >
@@ -120,7 +86,7 @@ export default function Home() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: 12 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="hidden lg:flex space-x-1 items-center"
               >
@@ -128,15 +94,16 @@ export default function Home() {
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
-                    className="text-sm font-medium text-muted-foreground hover:text-foreground px-4 py-2 rounded-full hover:bg-secondary/50 transition-all duration-300 capitalize"
+                    className="text-sm font-medium text-muted-foreground hover:text-foreground px-4 py-2 rounded-full hover:bg-secondary/50 active:bg-secondary/70 active:scale-[0.97] transition-all duration-300 capitalize"
                   >
                     {section}
                   </button>
                 ))}
-                <Link href="/ai">
-                  <button className="text-sm font-medium text-muted-foreground hover:text-foreground px-4 py-2 rounded-full hover:bg-secondary/50 transition-all duration-300 capitalize">
-                    AI Development
-                  </button>
+                <Link
+                  href="/ai"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground px-4 py-2 rounded-full hover:bg-secondary/50 active:bg-secondary/70 active:scale-[0.97] transition-all duration-300 capitalize"
+                >
+                  AI Development
                 </Link>
               </motion.div>
 
@@ -173,9 +140,9 @@ export default function Home() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Column: Text Content */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -16 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.7 }}
                 className="space-y-8 text-left"
               >
                 {/* Main Headline — strong primary + lighter tagline; accent uses shimmer */}
@@ -189,9 +156,9 @@ export default function Home() {
                 </h1>
 
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.25 }}
+                  transition={{ type: "spring", bounce: 0, duration: 0.7, delay: 0.1 }}
                   className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-snug font-light"
                 >
                   Building products that scale across CTV, mobile, and web, with AI in the loop from strategy to ship.
@@ -201,7 +168,7 @@ export default function Home() {
                 <motion.p
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
+                  transition={{ type: "spring", bounce: 0, duration: 0.7, delay: 0.2 }}
                   className="text-base md:text-lg text-muted-foreground/85 max-w-2xl leading-relaxed font-normal"
                 >
                   I use agents and models alongside human judgment for specs, research, and prototypes, keeping roadmaps moving at the speed of the stack orbiting this page.
@@ -209,27 +176,26 @@ export default function Home() {
 
                 {/* Enhanced CTA Buttons */}
                 <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
+                  transition={{ type: "spring", bounce: 0, duration: 0.7, delay: 0.3 }}
                   className="flex flex-col sm:flex-row gap-4 pt-4"
                 >
                   <Button
                     size="lg"
                     onClick={() => scrollToSection("contact")}
-                    className="h-12 px-8 text-base shimmer shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 rounded-full"
+                    className="h-12 px-8 text-base w-full sm:w-auto shimmer shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 rounded-full"
                   >
                     Let's Connect
                   </Button>
-                  <Link href="/ai">
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="h-12 px-8 text-base rounded-full border-2 hover:bg-secondary/50 transition-all duration-300 backdrop-blur-sm"
-                    >
-                      AI Solutions
-                    </Button>
-                  </Link>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="h-12 px-8 text-base w-full sm:w-auto rounded-full border-2 hover:bg-secondary/50 transition-all duration-300 backdrop-blur-sm"
+                  >
+                    <Link href="/ai">AI Solutions</Link>
+                  </Button>
                 </motion.div>
 
                 <HeroStatsBar />
@@ -237,9 +203,9 @@ export default function Home() {
 
               {/* Right Column: AI Orbital Animation */}
               <motion.div
-                initial={{ opacity: 0, x: 30, scale: 0.95 }}
+                initial={{ opacity: 0, x: 16, scale: 0.98 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.7, delay: 0.15 }}
                 className="relative hidden lg:block w-full"
               >
                  <AIOrbitall />
@@ -253,9 +219,9 @@ export default function Home() {
            <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20 -z-10" />
           <div className="container-max">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.6 }}
               viewport={{ once: true }}
               className="text-center mb-20"
             >
@@ -269,9 +235,9 @@ export default function Home() {
             <div className="grid lg:grid-cols-3 gap-8 mb-20 items-start">
               {/* Step 1: Strategy & Vision */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.6, delay: 0.05 }}
                 viewport={{ once: true }}
                 className="group h-full"
               >
@@ -308,9 +274,9 @@ export default function Home() {
 
               {/* Step 2: Execution & Collaboration */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
                 className="group h-full"
               >
@@ -347,9 +313,9 @@ export default function Home() {
 
               {/* Step 3: Launch & Optimization */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.6, delay: 0.15 }}
                 viewport={{ once: true }}
                 className="group h-full"
               >
@@ -387,9 +353,9 @@ export default function Home() {
 
             {/* Results Summary */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
               className="glass-card rounded-2xl p-10 border border-border/50"
             >
@@ -449,9 +415,9 @@ export default function Home() {
         <section id="experience" className="section-padding relative">
           <div className="container-max">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.6 }}
               viewport={{ once: true }}
               className="text-center mb-20"
             >
@@ -467,10 +433,9 @@ export default function Home() {
                 {timeline.map((item, index) => (
                   <motion.div
                     key={item.period}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -16 : 16 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    whileHover={{ scale: 1.01 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ type: "spring", bounce: 0, duration: 0.55, delay: index * 0.06 }}
                     viewport={{ once: true }}
                     className={`relative flex items-center ${
                       index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
@@ -508,9 +473,9 @@ export default function Home() {
         <section className="section-padding bg-secondary/30">
           <div className="container-max">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.6 }}
               viewport={{ once: true }}
               className="text-center mb-20"
             >
@@ -524,9 +489,9 @@ export default function Home() {
             <div className="grid lg:grid-cols-3 gap-8 mb-16 items-stretch">
               {/* Strategic Leadership */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.6, delay: 0.05 }}
                 viewport={{ once: true }}
                 className="h-full"
               >
@@ -557,9 +522,9 @@ export default function Home() {
 
               {/* Product Lifecycle Management */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
                 className="h-full"
               >
@@ -590,9 +555,9 @@ export default function Home() {
 
               {/* Cross-Functional Collaboration */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.6, delay: 0.15 }}
                 viewport={{ once: true }}
                 className="h-full"
               >
@@ -637,9 +602,9 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-secondary/30 to-background -z-10" />
           <div className="container-max">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.6 }}
               viewport={{ once: true }}
               className="text-center mb-16"
             >
@@ -651,9 +616,9 @@ export default function Home() {
 
             <div className="grid md:grid-cols-2 gap-8 md:items-stretch max-w-4xl mx-auto">
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.6 }}
                 viewport={{ once: true }}
                 className="h-full"
               >
@@ -694,9 +659,9 @@ export default function Home() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.6 }}
                 viewport={{ once: true }}
                 className="flex flex-col space-y-6 h-full"
               >
@@ -736,11 +701,11 @@ export default function Home() {
         <footer className="py-8 border-t">
           <div className="container-max text-center">
             <p className="text-muted-foreground">
-              © 2025 Chad Zarett. All rights reserved.
+              © {new Date().getFullYear()} Chad Zarett. All rights reserved.
             </p>
           </div>
         </footer>
       </div>
-    </>
+    </MotionConfig>
   );
 }

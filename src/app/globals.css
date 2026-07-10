@@ -147,7 +147,7 @@
   
   /* Modern Glassmorphism */
   .glass-nav {
-    @apply backdrop-blur-xl bg-background/70 border-b border-border/40 supports-[backdrop-filter]:bg-background/60;
+    @apply backdrop-blur-xl backdrop-saturate-150 bg-background/70 border-b border-border/40 supports-[backdrop-filter]:bg-background/60;
   }
   
   .glass-stats-bar {
@@ -202,6 +202,12 @@
 }
 
 /* Custom animations */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 @keyframes hero-text-shimmer {
   0%,
   100% {
@@ -213,9 +219,27 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .hero-text-shimmer {
     animation: none;
     background-position: 50% 50%;
+  }
+
+  .shimmer::before {
+    animation: none;
+  }
+}
+
+/* Reduced transparency: frost the glass into near-solid surfaces */
+@media (prefers-reduced-transparency: reduce) {
+  .glass-nav,
+  .glass-card,
+  .glass-stats-bar {
+    backdrop-filter: none;
+    background-color: var(--card);
   }
 }
 

@@ -34,11 +34,12 @@ export function MobileNav({ sections, onSectionClick }: MobileNavProps) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-20 left-0 right-0 mx-auto w-full max-w-sm glass-nav border border-border/50 shadow-xl rounded-2xl overflow-hidden z-50"
+            initial={{ opacity: 0, scale: 0.96, y: -8 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: -8 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+            style={{ transformOrigin: "top center" }}
+            className="absolute top-20 left-0 right-0 mx-auto w-full max-w-sm bg-background/95 backdrop-blur-xl border border-border/50 shadow-xl rounded-2xl overflow-hidden z-50"
           >
             <div className="px-4 py-4">
               <nav className="flex flex-col space-y-1">
@@ -46,15 +47,17 @@ export function MobileNav({ sections, onSectionClick }: MobileNavProps) {
                   <button
                     key={section}
                     onClick={() => handleSectionClick(section)}
-                    className="text-left py-3 px-4 rounded-xl hover:bg-secondary/50 transition-colors capitalize font-medium text-foreground"
+                    className="text-left py-3 px-4 rounded-xl hover:bg-secondary/50 active:bg-secondary/70 transition-colors capitalize font-medium text-foreground"
                   >
                     {section}
                   </button>
                 ))}
-                <Link href="/ai" onClick={() => setIsOpen(false)}>
-                  <button className="text-left py-3 px-4 rounded-xl hover:bg-secondary/50 transition-colors capitalize font-medium text-foreground w-full">
-                    AI Development
-                  </button>
+                <Link
+                  href="/ai"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-left py-3 px-4 rounded-xl hover:bg-secondary/50 active:bg-secondary/70 transition-colors capitalize font-medium text-foreground w-full"
+                >
+                  AI Development
                 </Link>
                 <div className="pt-4 mt-2 border-t border-border/20">
                   <div className="flex items-center justify-between py-2 px-4">

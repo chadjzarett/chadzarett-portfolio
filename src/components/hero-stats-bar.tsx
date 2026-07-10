@@ -52,15 +52,15 @@ export function HeroStatsBar() {
       ref={ref}
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.75 }}
+      transition={{ type: "spring", bounce: 0, duration: 0.6, delay: 0.4 }}
       className="pt-10 md:pt-12"
     >
-      <div className="glass-stats-bar inline-flex w-full max-w-xl flex-wrap items-stretch justify-between gap-6 sm:max-w-none sm:flex-nowrap sm:gap-0 md:max-w-2xl">
+      <div className="glass-stats-bar grid w-full max-w-xl grid-cols-3 gap-3 sm:flex sm:max-w-none sm:items-stretch sm:justify-between sm:gap-0 md:max-w-2xl">
         <motion.div
-          className="flex min-w-[5.5rem] flex-1 items-center gap-3 sm:flex-initial"
+          className="flex flex-col items-center gap-2 text-center sm:min-w-[5.5rem] sm:flex-row sm:items-center sm:gap-3 sm:text-left"
           initial={{ opacity: 0, y: 8 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.45, delay: 0.05 }}
+          transition={{ type: "spring", bounce: 0, duration: 0.45, delay: 0.05 }}
         >
           <span
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15"
@@ -68,8 +68,8 @@ export function HeroStatsBar() {
           >
             <CalendarRange className="h-4 w-4" strokeWidth={2} />
           </span>
-          <div className="min-w-0 text-left">
-            <p className="text-2xl font-bold tabular-nums tracking-tight text-foreground">
+          <div className="min-w-0">
+            <p className="text-xl font-bold tabular-nums tracking-tight text-foreground sm:text-2xl">
               {years}
               <span className="text-lg font-bold">+</span>
             </p>
@@ -85,10 +85,10 @@ export function HeroStatsBar() {
         />
 
         <motion.div
-          className="flex min-w-[5.5rem] flex-1 items-center gap-3 sm:flex-initial"
+          className="flex flex-col items-center gap-2 text-center sm:min-w-[5.5rem] sm:flex-row sm:items-center sm:gap-3 sm:text-left"
           initial={{ opacity: 0, y: 8 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.45, delay: 0.15 }}
+          transition={{ type: "spring", bounce: 0, duration: 0.45, delay: 0.12 }}
         >
           <span
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15"
@@ -96,8 +96,8 @@ export function HeroStatsBar() {
           >
             <Users className="h-4 w-4" strokeWidth={2} />
           </span>
-          <div className="min-w-0 text-left">
-            <p className="text-2xl font-bold tracking-tight text-foreground">Millions</p>
+          <div className="min-w-0">
+            <p className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">Millions</p>
             <p className="text-[0.65rem] font-medium uppercase tracking-widest text-muted-foreground">
               Users Reached
             </p>
@@ -110,10 +110,10 @@ export function HeroStatsBar() {
         />
 
         <motion.div
-          className="flex min-w-[5.5rem] flex-1 items-center gap-3 sm:flex-initial"
+          className="flex flex-col items-center gap-2 text-center sm:min-w-[5.5rem] sm:flex-row sm:items-center sm:gap-3 sm:text-left"
           initial={{ opacity: 0, y: 8 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.45, delay: 0.25 }}
+          transition={{ type: "spring", bounce: 0, duration: 0.45, delay: 0.19 }}
         >
           <span
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15"
@@ -121,8 +121,8 @@ export function HeroStatsBar() {
           >
             <Globe2 className="h-4 w-4" strokeWidth={2} />
           </span>
-          <div className="min-w-0 text-left">
-            <p className="text-2xl font-bold tracking-tight text-foreground">Global</p>
+          <div className="min-w-0">
+            <p className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">Global</p>
             <p className="text-[0.65rem] font-medium uppercase tracking-widest text-muted-foreground">
               Market Reach
             </p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionConfig } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CZLogo } from "@/components/cz-logo";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -8,22 +8,20 @@ import Link from "next/link";
 import { ArrowLeft, Sparkles, Brain, Rocket, Code, LayoutTemplate, Zap, Bot, TerminalSquare, Network, Database, Lock, MessageSquare, MessageCircle, Smartphone, Globe, Layout, LineChart, Palette, Cloud, GitBranch, Smile } from "lucide-react";
 
 export default function AIPage() {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 300], [0, -50]);
-
   return (
+    <MotionConfig reducedMotion="user">
     <div className="min-h-screen bg-background font-sans selection:bg-primary/10 selection:text-primary">
       {/* Floating Navigation */}
       <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ type: "spring", bounce: 0, duration: 0.5 }}
           className="rounded-full glass-nav shadow-lg px-6 py-3 border border-border/40"
         >
           <div className="flex justify-between items-center">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0 }}
               className="flex items-center space-x-3"
             >
@@ -34,24 +32,25 @@ export default function AIPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 12 }}
               animate={{ opacity: 1, x: 0 }}
               className="flex items-center space-x-3"
             >
               <div className="hidden md:flex items-center">
                 <ThemeToggle />
               </div>
-              <Link href="/">
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="rounded-full hover:bg-secondary/80 gap-2 font-medium"
-                >
+              <Button
+                asChild
+                size="sm"
+                variant="ghost"
+                className="rounded-full hover:bg-secondary/80 gap-2 font-medium"
+              >
+                <Link href="/">
                   <ArrowLeft className="w-4 h-4" />
                   <span className="hidden sm:inline">Back to Portfolio</span>
                   <span className="sm:hidden">Back</span>
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </motion.div>
           </div>
         </motion.div>
@@ -68,9 +67,9 @@ export default function AIPage() {
         
         <div className="container-max text-center relative z-20 px-4">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.7 }}
             className="space-y-8 max-w-5xl mx-auto"
           >
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-secondary/50 border border-border/50 backdrop-blur-sm text-sm font-medium mb-6 hover:bg-secondary/80 transition-colors cursor-default">
@@ -91,27 +90,26 @@ export default function AIPage() {
             </p>
 
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.7, delay: 0.25 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
             >
               <Button
                 size="lg"
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="h-14 px-8 text-lg shimmer shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 rounded-full"
+                className="h-14 px-8 text-lg w-full sm:w-auto shimmer shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 rounded-full"
               >
                 Explore Projects
               </Button>
-              <Link href="/#contact">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="h-14 px-8 text-lg rounded-full border-2 hover:bg-secondary/50 transition-all duration-300 backdrop-blur-sm"
-                >
-                  Let's Discuss AI
-                </Button>
-              </Link>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="h-14 px-8 text-lg w-full sm:w-auto rounded-full border-2 hover:bg-secondary/50 transition-all duration-300 backdrop-blur-sm"
+              >
+                <Link href="/#contact">Let's Discuss AI</Link>
+              </Button>
             </motion.div>
           </motion.div>
         </div>
@@ -124,9 +122,9 @@ export default function AIPage() {
         <div className="container-max relative z-10">
           {/* Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.6 }}
             viewport={{ once: true }}
             className="text-center mb-20"
           >
@@ -139,9 +137,9 @@ export default function AIPage() {
           <div className="grid lg:grid-cols-3 gap-8 mb-20 items-stretch">
             {/* AI Development Tools */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.6 }}
               viewport={{ once: true }}
               className="h-full"
             >
@@ -185,9 +183,9 @@ export default function AIPage() {
 
             {/* AI Models */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.6, delay: 0.05 }}
               viewport={{ once: true }}
               className="h-full"
             >
@@ -246,9 +244,9 @@ export default function AIPage() {
 
             {/* Applications */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
               className="h-full"
             >
@@ -291,9 +289,9 @@ export default function AIPage() {
 
           {/* Impact Statement */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.6, delay: 0.15 }}
             viewport={{ once: true }}
             className="relative group"
           >
@@ -331,9 +329,9 @@ export default function AIPage() {
 
           {/* CTA Section */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
             className="text-center mt-20"
           >
@@ -342,23 +340,21 @@ export default function AIPage() {
               Let's explore how AI can transform your product strategy and create meaningful user experiences.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/#contact">
-                <Button
-                  size="lg"
-                  className="h-14 px-10 text-lg rounded-full shimmer shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  Get In Touch
-                </Button>
-              </Link>
-              <Link href="/">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="h-14 px-10 text-lg rounded-full border-2 hover:bg-secondary/50 transition-all duration-300 backdrop-blur-sm"
-                >
-                  View Full Portfolio
-                </Button>
-              </Link>
+              <Button
+                asChild
+                size="lg"
+                className="h-14 px-10 text-lg w-full sm:w-auto rounded-full shimmer shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <Link href="/#contact">Get In Touch</Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="h-14 px-10 text-lg w-full sm:w-auto rounded-full border-2 hover:bg-secondary/50 transition-all duration-300 backdrop-blur-sm"
+              >
+                <Link href="/">View Full Portfolio</Link>
+              </Button>
             </div>
           </motion.div>
         </div>
@@ -368,10 +364,11 @@ export default function AIPage() {
       <footer className="py-8 border-t border-border/40 bg-background/50 backdrop-blur-sm">
         <div className="container-max text-center">
           <p className="text-muted-foreground">
-            © 2025 Chad Zarett. All rights reserved.
+            © {new Date().getFullYear()} Chad Zarett. All rights reserved.
           </p>
         </div>
       </footer>
     </div>
+    </MotionConfig>
   );
-} 
+}

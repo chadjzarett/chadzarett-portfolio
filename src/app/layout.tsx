@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://chadzarett.com"),
   title: "Chad Zarett - Product Leader & Strategic Innovator",
   description: "Seasoned product management executive with 20+ years of experience driving innovation in telecommunications. Specializes in cross-platform product strategy, team leadership, and delivering user-centric solutions.",
   keywords: ["product management", "telecommunications", "leadership", "strategy", "innovation", "Comcast", "Xumo"],
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "Chad Zarett Portfolio",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Chad Zarett - Product Leader & Strategic Innovator",
     description: "Seasoned product management executive with 20+ years of experience driving innovation in telecommunications.",
   },
@@ -55,7 +56,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Apply the saved/system theme before first paint to avoid a light-mode flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="antialiased">
         {children}
         <Analytics />
