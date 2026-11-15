@@ -160,8 +160,15 @@ function Section({
   );
 }
 
+const projectStatusLabel = {
+  live: "Live",
+  "private-beta": "Private beta",
+  "coming-soon": "Coming soon",
+} as const;
+
 function ProjectCard({ project }: { project: Project }) {
   const host = project.url?.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  const status = project.status ?? (project.url ? "live" : "coming-soon");
 
   const card = (
     <Card className="h-full gap-0 overflow-hidden py-0 shadow-none transition-colors group-hover:border-foreground/25">
@@ -183,14 +190,17 @@ function ProjectCard({ project }: { project: Project }) {
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex items-center justify-between gap-3">
           <h3 className="font-semibold tracking-tight">{project.name}</h3>
-          {project.url ? (
-            <Badge variant="outline">
-              <span aria-hidden className="size-1.5 rounded-full bg-success" />
-              Live
+          {status === "coming-soon" ? (
+            <Badge variant="outline" className="text-muted-foreground">
+              {projectStatusLabel[status]}
             </Badge>
           ) : (
-            <Badge variant="outline" className="text-muted-foreground">
-              Coming soon
+            <Badge variant="outline" className="shrink-0">
+              <span
+                aria-hidden
+                className={`size-1.5 rounded-full ${status === "live" ? "bg-success" : "bg-amber-500"}`}
+              />
+              {projectStatusLabel[status]}
             </Badge>
           )}
         </div>
@@ -203,9 +213,9 @@ function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
         {host && (
-          <p className="mt-auto flex items-center gap-1 pt-2 text-sm font-medium">
+          <p className="mt-auto flex items-center gap-1 pt-2 text-sm font-medium underline decoration-foreground/30 underline-offset-4 transition-colors group-hover:decoration-foreground">
             {host}
-            <ArrowUpRight className="size-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
+            <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
           </p>
         )}
       </div>
@@ -429,7 +439,7 @@ export default function Home() {
             title="Writing"
             description="Practical guidance and honest takes on the AI industry, from where to start to how to build an agent."
           >
-            <PostList posts={posts.slice(0, 3)} />
+            <PostList posts={posts.slice(0, 2)} />
             <Button asChild variant="outline" className="mt-8">
               <Link href="/writing">
                 All writing
