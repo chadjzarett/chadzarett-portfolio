@@ -1,9 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import Image from "next/image";
 import {
   ArrowRight,
-  ArrowUpRight,
   Bot,
   ClipboardList,
   Download,
@@ -19,7 +17,8 @@ import Link from "next/link";
 import { PostList } from "@/components/post-list";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { projects, type Project } from "@/data/projects";
+import { ProjectCarousel } from "@/components/project-carousel";
+import { projects } from "@/data/projects";
 import { getAllPosts } from "@/lib/writing";
 
 const EMAIL = "chadzarett@gmail.com";
@@ -160,82 +159,6 @@ function Section({
   );
 }
 
-const projectStatusLabel = {
-  live: "Live",
-  "private-beta": "Private beta",
-  "coming-soon": "Coming soon",
-} as const;
-
-function ProjectCard({ project }: { project: Project }) {
-  const host = project.url?.replace(/^https?:\/\//, "").replace(/\/$/, "");
-  const status = project.status ?? (project.url ? "live" : "coming-soon");
-
-  const card = (
-    <Card className="h-full gap-0 overflow-hidden py-0 shadow-none transition-colors group-hover:border-foreground/25">
-      <div className="relative flex aspect-[16/10] items-center justify-center border-b bg-muted">
-        {project.image ? (
-          <Image
-            src={project.image}
-            alt={`Screenshot of ${project.name}`}
-            fill
-            sizes="(min-width: 768px) 320px, 100vw"
-            className="object-cover object-top"
-          />
-        ) : (
-          <span aria-hidden className="font-mono text-3xl font-medium text-muted-foreground/50">
-            {project.name.charAt(0)}
-          </span>
-        )}
-      </div>
-      <div className="flex flex-1 flex-col gap-3 p-5">
-        <div className="flex items-center justify-between gap-3">
-          <h3 className="font-semibold tracking-tight">{project.name}</h3>
-          {status === "coming-soon" ? (
-            <Badge variant="outline" className="text-muted-foreground">
-              {projectStatusLabel[status]}
-            </Badge>
-          ) : (
-            <Badge variant="outline" className="shrink-0">
-              <span
-                aria-hidden
-                className={`size-1.5 rounded-full ${status === "live" ? "bg-success" : "bg-amber-500"}`}
-              />
-              {projectStatusLabel[status]}
-            </Badge>
-          )}
-        </div>
-        <p className="text-sm leading-relaxed text-muted-foreground">{project.description}</p>
-        <div className="flex flex-wrap gap-1.5">
-          {project.stack.map((item) => (
-            <Badge key={item} variant="secondary">
-              {item}
-            </Badge>
-          ))}
-        </div>
-        {host && (
-          <p className="mt-auto flex items-center gap-1 pt-2 text-sm font-medium underline decoration-foreground/30 underline-offset-4 transition-colors group-hover:decoration-foreground">
-            {host}
-            <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
-          </p>
-        )}
-      </div>
-    </Card>
-  );
-
-  return project.url ? (
-    <a
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group rounded-xl outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
-    >
-      {card}
-    </a>
-  ) : (
-    <div className="group">{card}</div>
-  );
-}
-
 export default function Home() {
   const hasResume = fs.existsSync(path.join(process.cwd(), "public", RESUME_PATH));
   const posts = getAllPosts();
@@ -291,17 +214,13 @@ export default function Home() {
           </dl>
         </section>
 
-        {/* Side projects */}
+        {/* AI Lab */}
         <Section
           id="projects"
-          title="Side projects"
+          title="AI Lab"
           description="Things I've designed and built on my own time. Some are live products, and some are still being developed."
         >
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <ProjectCard key={project.name} project={project} />
-            ))}
-          </div>
+          <ProjectCarousel projects={projects} />
         </Section>
 
         {/* AI and agents */}
@@ -359,7 +278,7 @@ export default function Home() {
           title="Experience"
           description="Product management and software development for consumer products, from connected devices and apps to a streaming service on every major screen."
           action={
-            <Button asChild variant="outline" className="shrink-0">
+            <Button asChild className="shrink-0">
               <a href={RESUME_PATH} download>
                 <Download />
                 Download resume

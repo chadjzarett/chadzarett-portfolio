@@ -9,7 +9,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 
 // Home page sections. The leading slash lets the same links work from /writing.
 const links = [
-  { href: "/#projects", label: "Projects" },
+  { href: "/#projects", label: "AI Lab" },
   { href: "/#ai", label: "AI & agents" },
   { href: "/#experience", label: "Experience" },
   { href: "/#skills", label: "Skills" },
@@ -87,7 +87,7 @@ export function SiteHeader({ showWriting = false }: { showWriting?: boolean }) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-background">
+    <header className="sticky top-0 z-50 bg-background">
       <div className="mx-auto flex h-14 w-full max-w-5xl items-center gap-6 px-4 sm:px-6">
         <a href="/#top" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
           <span
