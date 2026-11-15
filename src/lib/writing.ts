@@ -15,6 +15,11 @@ import matter from "gray-matter";
  */
 const WRITING_DIR = path.join(process.cwd(), "content", "writing");
 
+export type Faq = {
+  question: string;
+  answer: string;
+};
+
 export type Post = {
   slug: string;
   title: string;
@@ -23,6 +28,7 @@ export type Post = {
   date: string;
   tags: string[];
   draft: boolean;
+  faq: Faq[];
   readingMinutes: number;
   content: string;
 };
@@ -47,6 +53,14 @@ function readPost(fileName: string): Post {
   }
 
   const words = content.trim().split(/\s+/).length;
+  const faq = Array.isArray(data.faq)
+    ? data.faq.flatMap((item) => {
+        if (!item || typeof item !== "object") return [];
+        const question = "question" in item ? String(item.question) : "";
+        const answer = "answer" in item ? String(item.answer) : "";
+        return question && answer ? [{ question, answer }] : [];
+      })
+    : [];
 
   return {
     slug,
@@ -55,6 +69,7 @@ function readPost(fileName: string): Post {
     date: toIsoDate(data.date, slug),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     draft: data.draft === true,
+    faq,
     readingMinutes: Math.max(1, Math.round(words / 220)),
     content,
   };

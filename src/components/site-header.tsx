@@ -15,8 +15,18 @@ const links = [
   { href: "/#skills", label: "Skills" },
 ];
 
+const navLinkClass = (active = false) =>
+  [
+    "relative pb-0.5 text-sm text-muted-foreground transition-colors",
+    "after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:bg-current after:opacity-0 after:scale-x-[0.2]",
+    "after:transition-[transform,opacity] after:duration-[160ms] after:ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:after:transition-none",
+    "[@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:after:scale-x-100! [@media(hover:hover)_and_(pointer:fine)]:hover:after:opacity-100",
+    active ? "text-foreground after:scale-x-100! after:opacity-100" : "",
+  ].join(" ");
+
 export function SiteHeader({ showWriting = false }: { showWriting?: boolean }) {
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const onWriting = usePathname().startsWith("/writing");
 
   // Smooth-scroll in-page anchor links from a click handler rather than CSS
@@ -42,6 +52,40 @@ export function SiteHeader({ showWriting = false }: { showWriting?: boolean }) {
     return () => document.removeEventListener("click", onClick);
   }, []);
 
+  useEffect(() => {
+    const ids = [...links.map((link) => link.href.slice(link.href.indexOf("#") + 1)), "writing"];
+    const elements = ids
+      .map((id) => document.getElementById(id))
+      .filter((element): element is HTMLElement => element !== null);
+    if (elements.length === 0) return;
+
+    let frame = 0;
+    const update = () => {
+      const line = window.innerHeight * 0.35;
+      let current: string | null = null;
+      for (const element of elements) {
+        if (element.getBoundingClientRect().top <= line) current = element.id;
+      }
+      setActiveSection(current);
+    };
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        update();
+      });
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 border-b bg-background">
       <div className="mx-auto flex h-14 w-full max-w-5xl items-center gap-6 px-4 sm:px-6">
@@ -60,7 +104,7 @@ export function SiteHeader({ showWriting = false }: { showWriting?: boolean }) {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className={navLinkClass(activeSection === link.href.slice(link.href.indexOf("#") + 1))}
             >
               {link.label}
             </a>
@@ -68,10 +112,8 @@ export function SiteHeader({ showWriting = false }: { showWriting?: boolean }) {
           {showWriting && (
             <Link
               href="/writing"
-              aria-current={onWriting ? "page" : undefined}
-              className={`text-sm transition-colors hover:text-foreground ${
-                onWriting ? "text-foreground" : "text-muted-foreground"
-              }`}
+              aria-current={onWriting || activeSection === "writing" ? "page" : undefined}
+              className={navLinkClass(onWriting || activeSection === "writing")}
             >
               Writing
             </Link>

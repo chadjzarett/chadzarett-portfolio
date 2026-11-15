@@ -26,6 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} | Chad Zarett`,
     description: post.description,
+    keywords: post.tags,
+    alternates: { canonical: `/writing/${post.slug}` },
     openGraph: {
       type: "article",
       url: `https://chadzarett.com/writing/${post.slug}`,
@@ -43,9 +45,37 @@ export default async function PostPage({ params }: Props) {
   const post = getPost(slug);
   if (!post) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: post.title,
+        description: post.description,
+        datePublished: post.date,
+        author: { "@type": "Person", name: "Chad Zarett", url: "https://chadzarett.com" },
+        mainEntityOfPage: `https://chadzarett.com/writing/${post.slug}`,
+      },
+      ...(post.faq.length > 0
+        ? [
+            {
+              "@type": "FAQPage",
+              mainEntity: post.faq.map((item) => ({
+                "@type": "Question",
+                name: item.question,
+                acceptedAnswer: { "@type": "Answer", text: item.answer },
+              })),
+            },
+          ]
+        : []),
+    ],
+  };
+
   return (
     <div id="top" className="flex min-h-screen flex-col">
       <SiteHeader showWriting />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-12 sm:px-6 md:py-20">
         <article className="mx-auto max-w-2xl">
@@ -83,6 +113,17 @@ export default async function PostPage({ params }: Props) {
 
           <div className="prose mt-8">
             <Markdown remarkPlugins={[remarkGfm]}>{post.content}</Markdown>
+            {post.faq.length > 0 && (
+              <>
+                <h2>Questions owners ask first</h2>
+                {post.faq.map((item) => (
+                  <div key={item.question}>
+                    <h3>{item.question}</h3>
+                    <p>{item.answer}</p>
+                  </div>
+                ))}
+              </>
+            )}
           </div>
 
           <footer className="mt-12 border-t pt-8 text-sm text-muted-foreground">

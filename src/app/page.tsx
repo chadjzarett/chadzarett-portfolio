@@ -7,9 +7,10 @@ import {
   Bot,
   ClipboardList,
   Download,
-  Linkedin,
   Mail,
   Rocket,
+  Users,
+  Wrench,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -36,27 +37,31 @@ const stats = [
 const aiPractice = [
   {
     icon: Bot,
+    iconClass: "bg-violet-100 text-violet-600 dark:bg-violet-500/20 dark:text-violet-300",
     title: "Agents and automation",
     body: "I design agents and multi-step workflows that take real work off people's plates, built with Claude Code, n8n, Make, and Zapier.",
   },
   {
     icon: Rocket,
+    iconClass: "bg-orange-100 text-orange-500 dark:bg-orange-500/20 dark:text-orange-300",
     title: "Idea to live product",
-    body: "I take ideas from first prompt to deployed app with Cursor, Claude Code, and v0, running on Supabase, Clerk, and Vercel.",
+    body: "I take ideas from first prompt to deployed app with Cursor, Claude Code, and Codex, running on Supabase, Clerk, and Vercel.",
   },
   {
     icon: ClipboardList,
+    iconClass: "bg-cyan-100 text-cyan-600 dark:bg-cyan-500/20 dark:text-cyan-300",
     title: "AI in the product process",
     body: "Models and agents are part of my daily work on specs, research, and prototypes, with human judgment on every decision.",
   },
 ];
 
 const toolkit = [
-  { label: "Models", items: ["Claude", "ChatGPT", "Gemini"] },
-  { label: "Agentic coding", items: ["Claude Code", "Cursor", "Replit Agent", "GitHub Copilot"] },
+  { label: "Models", items: ["Claude", "ChatGPT", "Gemini", "Grok"] },
+  { label: "Agentic coding", items: ["Claude Code", "Cursor", "Codex", "GitHub Copilot", "Grok Bot", "Microsoft CoPilot"] },
   { label: "Prototyping", items: ["v0", "Lovable", "Bolt", "Google AI Studio", "Figma Make"] },
   { label: "Automation", items: ["n8n", "Make", "Zapier"] },
-  { label: "Infrastructure", items: ["Supabase", "Clerk", "Vercel", "GitHub"] },
+  { label: "Infrastructure", items: ["Supabase", "Convex", "Clerk", "Vercel", "GitHub"] },
+  { label: "Analytics", items: ["PostHog"] },
 ];
 
 const experience = [
@@ -73,40 +78,22 @@ const experience = [
     title: "Sr. Product Manager, Video and Connected Living",
     company: "Comcast",
     description:
-      "Led product strategy and development for video and connected living products, focused on user experience and market adoption.",
+      "Led product strategy and development for X1 and Flex video devices, and for the Xfinity app in connected living, focused on user experience, device activation, and onboarding.",
   },
   {
     period: "2012 – 2016",
     title: "Sr. Manager, Customer Experience and Deployment",
     company: "Comcast",
     description:
-      "Managed customer experience initiatives and deployment strategy across multiple product lines.",
-  },
-  {
-    period: "2010 – 2012",
-    title: "Sr. Analyst, Strategic Delivery and Deployment",
-    company: "Comcast",
-    description:
-      "Provided strategic analysis for delivery and deployment optimization on xfinity.com.",
-  },
-  {
-    period: "2005 – 2009",
-    title: "Senior Marketing Professional, Product Management",
-    company: "Comcast",
-    description:
-      "Led marketing and product management for video services in the Freedom Region.",
-  },
-  {
-    period: "2002 – 2004",
-    title: "Marketing Analyst / Coordinator",
-    company: "Comcast",
-    description: "Analytical support and coordination for marketing campaigns.",
+      "Managed customer experience initiatives and deployment strategy across Comcast national COEs and regional call centers, supporting the X1 and Xfinity Stream flagship products.",
   },
 ];
 
 const skills = [
   {
     label: "Product leadership",
+    icon: Users,
+    iconClass: "bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-300",
     items: [
       "Product strategy",
       "Roadmapping",
@@ -117,19 +104,28 @@ const skills = [
       "Cross-functional collaboration",
       "Data-driven decisions",
       "Go-to-market",
+      "AI adoption",
+      "AI product strategy",
+      "Evaluating AI use cases",
     ],
   },
   {
     label: "Tools",
+    icon: Wrench,
+    iconClass: "bg-amber-100 text-amber-600 dark:bg-amber-500/20 dark:text-amber-300",
     items: [
       "Figma",
       "Miro",
       "Jira",
+      "Linear",
       "Confluence",
+      "Notion",
       "Tableau",
       "Looker",
+      "Google Analytics",
+      "PostHog",
       "SQL",
-      "Splunk",
+      "Excel",
       "Periscope Data",
     ],
   },
@@ -139,19 +135,24 @@ function Section({
   id,
   title,
   description,
+  action,
   children,
 }: {
   id: string;
   title: string;
   description: string;
+  action?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
     <section id={id} className="scroll-mt-14 border-t">
       <div className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 md:py-24">
-        <div className="mb-10 max-w-2xl">
-          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">{title}</h2>
-          <p className="mt-3 text-pretty text-muted-foreground">{description}</p>
+        <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">{title}</h2>
+            <p className="mt-3 text-pretty text-muted-foreground">{description}</p>
+          </div>
+          {action}
         </div>
         {children}
       </div>
@@ -236,8 +237,8 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero */}
         <section className="mx-auto w-full max-w-5xl px-4 pb-16 pt-16 sm:px-6 md:pb-24 md:pt-28">
-          <Badge variant="outline" className="h-7 px-3 font-normal text-muted-foreground">
-            Director of Product, Xumo Play at Comcast
+          <Badge variant="outline" className="h-7 px-3 font-normal uppercase text-muted-foreground">
+            Product management &amp; Builder · Philadelphia
           </Badge>
 
           <h1 className="mt-6 max-w-3xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl md:leading-[1.05]">
@@ -284,7 +285,7 @@ export default function Home() {
         <Section
           id="projects"
           title="Side projects"
-          description="Things I've designed, built, and shipped on my own time. Each one is live and built with AI in the loop."
+          description="Things I've designed and built on my own time. Some are live products, and some are still being developed."
         >
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
@@ -300,12 +301,12 @@ export default function Home() {
           description="I build with the same tools I make product decisions about. Working hands-on with models and agents is how I judge what is worth building, what it will take, and what can ship."
         >
           <div className="grid gap-4 md:grid-cols-3">
-            {aiPractice.map(({ icon: Icon, title, body }) => (
+            {aiPractice.map(({ icon: Icon, iconClass, title, body }) => (
               <Card key={title} className="gap-4 shadow-none">
                 <CardHeader className="gap-4">
                   <span
                     aria-hidden
-                    className="flex size-9 items-center justify-center rounded-md border bg-muted"
+                    className={`flex size-9 items-center justify-center rounded-md ${iconClass}`}
                   >
                     <Icon className="size-4" />
                   </span>
@@ -342,28 +343,19 @@ export default function Home() {
           </div>
         </Section>
 
-        {/* Writing: only shown once there is at least one published post */}
-        {posts.length > 0 && (
-          <Section
-            id="writing"
-            title="Writing"
-            description="Practical guidance and honest takes on the AI industry, from where to start to how to build an agent."
-          >
-            <PostList posts={posts.slice(0, 3)} />
-            <Button asChild variant="outline" className="mt-8">
-              <Link href="/writing">
-                All writing
-                <ArrowRight />
-              </Link>
-            </Button>
-          </Section>
-        )}
-
         {/* Experience */}
         <Section
           id="experience"
           title="Experience"
-          description="Two decades at Comcast, growing from marketing analyst to leading product for a streaming service on every major screen."
+          description="Product management and software development for consumer products, from connected devices and apps to a streaming service on every major screen."
+          action={
+            <Button asChild variant="outline" className="shrink-0">
+              <a href={RESUME_PATH} download>
+                <Download />
+                Download resume
+              </a>
+            </Button>
+          }
         >
           <ol className="divide-y border-y">
             {experience.map((role) => (
@@ -372,7 +364,11 @@ export default function Home() {
                 <div>
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
                     <h3 className="font-semibold tracking-tight">{role.title}</h3>
-                    {role.current && <Badge variant="secondary">Current</Badge>}
+                    {role.current && (
+                      <Badge className="rounded-full border-transparent bg-violet-100 text-violet-700 dark:bg-violet-500/20 dark:text-violet-300">
+                        Current
+                      </Badge>
+                    )}
                   </div>
                   <p className="mt-1 text-sm text-muted-foreground">{role.company}</p>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
@@ -404,7 +400,15 @@ export default function Home() {
             {skills.map((group) => (
               <Card key={group.label} className="gap-4 shadow-none">
                 <CardHeader>
-                  <CardTitle>{group.label}</CardTitle>
+                  <div className="flex items-center gap-3">
+                    <span
+                      aria-hidden
+                      className={`flex size-9 items-center justify-center rounded-md ${group.iconClass}`}
+                    >
+                      <group.icon className="size-4" />
+                    </span>
+                    <CardTitle>{group.label}</CardTitle>
+                  </div>
                 </CardHeader>
                 <CardContent className="flex flex-wrap gap-1.5">
                   {group.items.map((item) => (
@@ -417,6 +421,23 @@ export default function Home() {
             ))}
           </div>
         </Section>
+
+        {/* Writing: only shown once there is at least one published post */}
+        {posts.length > 0 && (
+          <Section
+            id="writing"
+            title="Writing"
+            description="Practical guidance and honest takes on the AI industry, from where to start to how to build an agent."
+          >
+            <PostList posts={posts.slice(0, 3)} />
+            <Button asChild variant="outline" className="mt-8">
+              <Link href="/writing">
+                All writing
+                <ArrowRight />
+              </Link>
+            </Button>
+          </Section>
+        )}
 
         {/* Contact */}
         <Section
@@ -465,21 +486,21 @@ export default function Home() {
           <ul className="mt-8 flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:flex-wrap sm:gap-x-8">
             <li>
               <a
-                href={`mailto:${EMAIL}`}
-                className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
-              >
-                <Mail className="size-4" />
-                {EMAIL}
-              </a>
-            </li>
-            <li>
-              <a
                 href={LINKEDIN}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
               >
-                <Linkedin className="size-4" />
+                <svg viewBox="0 0 24 24" className="size-4 shrink-0" aria-hidden>
+                  <path
+                    fill="#0A66C2"
+                    d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                  <path
+                    fill="#fff"
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452z"
+                  />
+                </svg>
                 linkedin.com/in/chadzarett
               </a>
             </li>
