@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chadzarett.com"),
-  title: "Chad Zarett - Product Leader & Strategic Innovator",
-  description: "Seasoned product management executive with 20+ years of experience driving innovation in telecommunications. Specializes in cross-platform product strategy, team leadership, and delivering user-centric solutions.",
-  keywords: ["product management", "telecommunications", "leadership", "strategy", "innovation", "Comcast", "Xumo"],
+  title: "Chad Zarett | Product leader who builds with AI",
+  description: "Director of Product for Xumo Play at Comcast with 20+ years shipping products used by millions across connected TV, mobile, and web. I also design and build AI products and agents.",
+  keywords: ["product management", "product leadership", "AI", "AI agents", "Claude Code", "streaming", "Comcast", "Xumo"],
   authors: [{ name: "Chad Zarett" }],
   creator: "Chad Zarett",
   icons: {
@@ -35,14 +35,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://chadzarett.com",
-    title: "Chad Zarett - Product Leader & Strategic Innovator",
-    description: "Seasoned product management executive with 20+ years of experience driving innovation in telecommunications.",
+    title: "Chad Zarett | Product leader who builds with AI",
+    description: "Director of Product with 20+ years shipping products used by millions. I also design and build AI products and agents.",
     siteName: "Chad Zarett Portfolio",
   },
   twitter: {
     card: "summary",
-    title: "Chad Zarett - Product Leader & Strategic Innovator",
-    description: "Seasoned product management executive with 20+ years of experience driving innovation in telecommunications.",
+    title: "Chad Zarett | Product leader who builds with AI",
+    description: "Director of Product with 20+ years shipping products used by millions. I also design and build AI products and agents.",
   },
   robots: {
     index: true,
