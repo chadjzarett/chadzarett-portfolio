@@ -115,7 +115,7 @@ export default async function PostPage({ params }: Props) {
             <Markdown remarkPlugins={[remarkGfm]}>{post.content}</Markdown>
             {post.faq.length > 0 && (
               <>
-                <h2>Questions owners ask first</h2>
+                <h2>{post.faqHeading}</h2>
                 {post.faq.map((item) => (
                   <div key={item.question}>
                     <h3>{item.question}</h3>

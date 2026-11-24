@@ -3,6 +3,7 @@ title: "How to set up your business on ChatGPT"
 description: "How to claim your business in ChatGPT Business Hub, finish Persona verification, update your listing, and publish a business agent customers can ask."
 date: "2026-11-14"
 tags: [ChatGPT, Business Hub, business agent, ChatGPT for business]
+faqHeading: "Questions owners ask first"
 faq:
   - question: Do I need ads or a ChatGPT Enterprise account to claim my business?
     answer: No. Claiming a listing, publishing a business agent, and running ads are three separate choices. You need to own the business or be allowed to represent it, then pass the verification ChatGPT offers for that listing.

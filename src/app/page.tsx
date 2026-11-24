@@ -24,8 +24,10 @@ import { getAllPosts } from "@/lib/writing";
 const EMAIL = "chadzarett@gmail.com";
 const LINKEDIN = "https://linkedin.com/in/chadzarett/";
 
-/** Drop the PDF at public/chad-zarett-resume.pdf and the download button appears. */
-const RESUME_PATH = "/chad-zarett-resume.pdf";
+/** Served from public/chad-zarett-resume.pdf */
+const RESUME_FILE = "chad-zarett-resume.pdf";
+const RESUME_PATH = `/${RESUME_FILE}`;
+const RESUME_DOWNLOAD_NAME = "ChadZarett_Resume.pdf";
 
 const stats = [
   { value: "20+", label: "Years building products" },
@@ -160,7 +162,7 @@ function Section({
 }
 
 export default function Home() {
-  const hasResume = fs.existsSync(path.join(process.cwd(), "public", RESUME_PATH));
+  const hasResume = fs.existsSync(path.join(process.cwd(), "public", RESUME_FILE));
   const posts = getAllPosts();
 
   return (
@@ -196,7 +198,7 @@ export default function Home() {
             </Button>
             {hasResume && (
               <Button asChild size="lg" variant="ghost">
-                <a href={RESUME_PATH} download>
+                <a href={RESUME_PATH} download={RESUME_DOWNLOAD_NAME}>
                   <Download />
                   Download resume
                 </a>
@@ -279,7 +281,7 @@ export default function Home() {
           description="Product management and software development for consumer products, from connected devices and apps to a streaming service on every major screen."
           action={
             <Button asChild className="shrink-0">
-              <a href={RESUME_PATH} download>
+              <a href={RESUME_PATH} download={RESUME_DOWNLOAD_NAME}>
                 <Download />
                 Download resume
               </a>

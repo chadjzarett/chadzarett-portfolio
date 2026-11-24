@@ -28,6 +28,8 @@ export type Post = {
   date: string;
   tags: string[];
   draft: boolean;
+  /** Heading rendered above the FAQ. Defaults to a general label. */
+  faqHeading: string;
   faq: Faq[];
   readingMinutes: number;
   content: string;
@@ -69,6 +71,10 @@ function readPost(fileName: string): Post {
     date: toIsoDate(data.date, slug),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     draft: data.draft === true,
+    faqHeading:
+      typeof data.faqHeading === "string" && data.faqHeading.trim()
+        ? data.faqHeading.trim()
+        : "Common questions",
     faq,
     readingMinutes: Math.max(1, Math.round(words / 220)),
     content,
